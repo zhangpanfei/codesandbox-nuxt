@@ -1,3 +1,3 @@
 <template>
-  <Tutorial />
+  <div>123</div>
 </template>
