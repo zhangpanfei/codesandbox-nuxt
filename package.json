@@ -12,6 +12,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "element-ui": "2.15.6",
     "nuxt": "^2.15.0"
   }
 }
