@@ -1,22 +1,26 @@
 <template>
   <el-container>
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu :default-openeds="['1', '3']" style="min-height: 100vh">
+      <el-menu
+        :default-openeds="['1', '3']"
+        style="min-height: 100vh"
+        :router="true"
+      >
         <template v-for="menu in menus">
-          <el-submenu v-if="menu.children" :key="menu.id" :index="menu.id">
+          <el-submenu v-if="menu.children" :key="menu.id" :index="menu.index">
             <template slot="title"
               ><i class="el-icon-message"></i>{{ menu.title }}</template
             >
 
             <el-menu-item
               v-for="item in menu.children"
-              :key="item.id"
-              :index="`${menu.id}-${item.id}`"
+              :key="item.index"
+              :index="`${menu.index}/${item.index}`"
               >{{ item.title }}</el-menu-item
             >
           </el-submenu>
 
-          <el-menu-item :key="menu.id" v-else
+          <el-menu-item :key="menu.index" v-else :index="`${menu.index}`"
             ><i class="el-icon-message"></i>{{ menu.title }}</el-menu-item
           >
         </template>
@@ -103,15 +107,15 @@ export default {
       tableData: Array(20).fill(item),
       menus: [
         {
-          id: 1,
-          title: "标题",
+          index: "prototype",
+          title: "原型链",
           children: [
-            { id: 11, title: "辩题1" },
-            { id: 12, title: "辩题2" },
+            { index: "gzhs", title: "构造函数" },
+            { index: "12", title: "辩题2" },
           ],
         },
         {
-          id: 2,
+          index: "2",
           title: "标题1",
           /* children: [
             { id: 21, title: "辩题11" },
